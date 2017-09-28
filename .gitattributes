@@ -1,0 +1,14 @@
+* text=auto
+
+*.c text
+*.h text
+Makefile text
+makedefs text
+*.md text
+*.txt text
+
+*.uvproj text eol=crlf
+*.uvopt  text eol=crlf
+*.ewp    text eol=crlf
+*.sgxx binary
+
