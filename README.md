@@ -23,6 +23,7 @@ tags so you can checkout a specific tag if you need a specific release.
 Tag | Comment
 ----|--------
 LM3S-LM4F-9453|This was the last release of StellarisWare that included both the LM3S and LM4F devices before the Tiva rebranding
+LM3S-10636    |Last release of StellarisWare for just the LM3S device. After this the LM4F/Tiva devices were split into a separate product. This is probably what you should use if you have a LM3S.
 
 * * * * *
 
