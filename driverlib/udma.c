@@ -2,7 +2,7 @@
 //
 // udma.c - Driver for the micro-DMA controller.
 //
-// Copyright (c) 2007-2013 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2007-2015 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.0.1.11577 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.1.1.71 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -649,7 +649,7 @@ uDMAChannelControlSet(uint32_t ui32ChannelStructIndex, uint32_t ui32Control)
 //! \param ui32TransferSize is the number of data items to transfer.
 //!
 //! This function is used to configure the parameters for a uDMA transfer.
-//! These parameters are typically changed often.  The function
+//! These parameters are not typically changed often.  The function
 //! uDMAChannelControlSet() MUST be called at least once for this channel prior
 //! to calling this function.
 //!
@@ -1062,122 +1062,6 @@ uDMAChannelModeGet(uint32_t ui32ChannelStructIndex)
 
 //*****************************************************************************
 //
-//! Selects the secondary peripheral for a set of uDMA channels.
-//!
-//! \param ui32SecPeriphs is the logical OR of the uDMA channels for which to
-//! use the secondary peripheral, instead of the default peripheral.
-//!
-//! This function is used to select the secondary peripheral assignment for a
-//! set of uDMA channels.  By selecting the secondary peripheral assignment for
-//! a channel, the default peripheral assignment is no longer available for
-//! that channel.
-//!
-//! The parameter \e ui32SecPeriphs can be the logical OR of any of the
-//! following macros.  If one of the macros below is in the list passed to this
-//! function, then the secondary peripheral (marked as \b _SEC_) is selected.
-//!
-//! - \b UDMA_DEF_USBEP1RX_SEC_UART2RX
-//! - \b UDMA_DEF_USBEP1TX_SEC_UART2TX
-//! - \b UDMA_DEF_USBEP2RX_SEC_TMR3A
-//! - \b UDMA_DEF_USBEP2TX_SEC_TMR3B
-//! - \b UDMA_DEF_USBEP3RX_SEC_TMR2A
-//! - \b UDMA_DEF_USBEP3TX_SEC_TMR2B
-//! - \b UDMA_DEF_ETH0RX_SEC_TMR2A
-//! - \b UDMA_DEF_ETH0TX_SEC_TMR2B
-//! - \b UDMA_DEF_UART0RX_SEC_UART1RX
-//! - \b UDMA_DEF_UART0TX_SEC_UART1TX
-//! - \b UDMA_DEF_SSI0RX_SEC_SSI1RX
-//! - \b UDMA_DEF_SSI0TX_SEC_SSI1TX
-//! - \b UDMA_DEF_RESERVED_SEC_UART2RX
-//! - \b UDMA_DEF_RESERVED_SEC_UART2TX
-//! - \b UDMA_DEF_ADC00_SEC_TMR2A
-//! - \b UDMA_DEF_ADC01_SEC_TMR2B
-//! - \b UDMA_DEF_ADC02_SEC_RESERVED
-//! - \b UDMA_DEF_ADC03_SEC_RESERVED
-//! - \b UDMA_DEF_TMR0A_SEC_TMR1A
-//! - \b UDMA_DEF_TMR0B_SEC_TMR1B
-//! - \b UDMA_DEF_TMR1A_SEC_EPI0RX
-//! - \b UDMA_DEF_TMR1B_SEC_EPI0TX
-//! - \b UDMA_DEF_UART1RX_SEC_RESERVED
-//! - \b UDMA_DEF_UART1TX_SEC_RESERVED
-//! - \b UDMA_DEF_SSI1RX_SEC_ADC10
-//! - \b UDMA_DEF_SSI1TX_SEC_ADC11
-//! - \b UDMA_DEF_RESERVED_SEC_ADC12
-//! - \b UDMA_DEF_RESERVED_SEC_ADC13
-//! - \b UDMA_DEF_I2S0RX_SEC_RESERVED
-//! - \b UDMA_DEF_I2S0TX_SEC_RESERVED
-//!
-//! \return None.
-//
-//*****************************************************************************
-void
-uDMAChannelSelectSecondary(uint32_t ui32SecPeriphs)
-{
-    //
-    // Select the secondary peripheral for the specified channels.
-    //
-    HWREG(UDMA_CHASGN) |= ui32SecPeriphs;
-}
-
-//*****************************************************************************
-//
-//! Selects the default peripheral for a set of uDMA channels.
-//!
-//! \param ui32DefPeriphs is the logical OR of the uDMA channels for which to
-//! use the default peripheral, instead of the secondary peripheral.
-//!
-//! This function is used to select the default peripheral assignment for a set
-//! of uDMA channels.
-//!
-//! The parameter \e ui32DefPeriphs can be the logical OR of any of the
-//! following macros.  If one of the macros below is in the list passed to this
-//! function, then the default peripheral (marked as \b _DEF_) is selected.
-//!
-//! - \b UDMA_DEF_USBEP1RX_SEC_UART2RX
-//! - \b UDMA_DEF_USBEP1TX_SEC_UART2TX
-//! - \b UDMA_DEF_USBEP2RX_SEC_TMR3A
-//! - \b UDMA_DEF_USBEP2TX_SEC_TMR3B
-//! - \b UDMA_DEF_USBEP3RX_SEC_TMR2A
-//! - \b UDMA_DEF_USBEP3TX_SEC_TMR2B
-//! - \b UDMA_DEF_ETH0RX_SEC_TMR2A
-//! - \b UDMA_DEF_ETH0TX_SEC_TMR2B
-//! - \b UDMA_DEF_UART0RX_SEC_UART1RX
-//! - \b UDMA_DEF_UART0TX_SEC_UART1TX
-//! - \b UDMA_DEF_SSI0RX_SEC_SSI1RX
-//! - \b UDMA_DEF_SSI0TX_SEC_SSI1TX
-//! - \b UDMA_DEF_RESERVED_SEC_UART2RX
-//! - \b UDMA_DEF_RESERVED_SEC_UART2TX
-//! - \b UDMA_DEF_ADC00_SEC_TMR2A
-//! - \b UDMA_DEF_ADC01_SEC_TMR2B
-//! - \b UDMA_DEF_ADC02_SEC_RESERVED
-//! - \b UDMA_DEF_ADC03_SEC_RESERVED
-//! - \b UDMA_DEF_TMR0A_SEC_TMR1A
-//! - \b UDMA_DEF_TMR0B_SEC_TMR1B
-//! - \b UDMA_DEF_TMR1A_SEC_EPI0RX
-//! - \b UDMA_DEF_TMR1B_SEC_EPI0TX
-//! - \b UDMA_DEF_UART1RX_SEC_RESERVED
-//! - \b UDMA_DEF_UART1TX_SEC_RESERVED
-//! - \b UDMA_DEF_SSI1RX_SEC_ADC10
-//! - \b UDMA_DEF_SSI1TX_SEC_ADC11
-//! - \b UDMA_DEF_RESERVED_SEC_ADC12
-//! - \b UDMA_DEF_RESERVED_SEC_ADC13
-//! - \b UDMA_DEF_I2S0RX_SEC_RESERVED
-//! - \b UDMA_DEF_I2S0TX_SEC_RESERVED
-//!
-//! \return None.
-//
-//*****************************************************************************
-void
-uDMAChannelSelectDefault(uint32_t ui32DefPeriphs)
-{
-    //
-    // Select the default peripheral for the specified channels.
-    //
-    HWREG(UDMA_CHASGN) &= ~ui32DefPeriphs;
-}
-
-//*****************************************************************************
-//
 //! Registers an interrupt handler for the uDMA controller.
 //!
 //! \param ui32IntChannel identifies which uDMA interrupt is to be registered.
@@ -1297,7 +1181,8 @@ uDMAIntStatus(void)
 //!
 //! \note This function is only available on devices that have the DMA Channel
 //! Interrupt Status Register (DMACHIS).  Please consult the data sheet for
-//! your part.
+//! your part. Devices without the DMACHIS register have uDMA done status in
+//! the interrupt registers in the peripheral memory maps.
 //!
 //! \return None.
 //
@@ -1345,7 +1230,7 @@ uDMAChannelAssign(uint32_t ui32Mapping)
     //
     // Check the parameters
     //
-    ASSERT((ui32Mapping & 0xffffff00) < 0x00050000);
+    ASSERT((ui32Mapping & 0xffffff00) < 0x00090000);
 
     //
     // Extract the channel number and map encoding value from the parameter.
@@ -1366,6 +1251,130 @@ uDMAChannelAssign(uint32_t ui32Mapping)
     HWREG(ui32MapReg) = (HWREG(ui32MapReg) & ~(0xf << ui8MapShift)) |
                         ui32Mapping << ui8MapShift;
 }
+
+//*****************************************************************************
+//
+// The following functions are deprecated.  Use uDMAChannelAssign() instead
+// to accomplish the same end.
+//
+//*****************************************************************************
+#ifndef DEPRECATED
+//*****************************************************************************
+//
+//! Selects the secondary peripheral for a set of uDMA channels.
+//!
+//! \param ui32SecPeriphs is the logical OR of the uDMA channels for which to
+//! use the secondary peripheral, instead of the default peripheral.
+//!
+//! This function is used to select the secondary peripheral assignment for a
+//! set of uDMA channels.  By selecting the secondary peripheral assignment for
+//! a channel, the default peripheral assignment is no longer available for
+//! that channel.
+//!
+//! The parameter \e ui32SecPeriphs can be the logical OR of any of the
+//! following macros.  If one of the macros below is in the list passed to this
+//! function, then the secondary peripheral (marked as \b _SEC_) is selected.
+//!
+//! - \b UDMA_DEF_USBEP1RX_SEC_UART2RX
+//! - \b UDMA_DEF_USBEP1TX_SEC_UART2TX
+//! - \b UDMA_DEF_USBEP2RX_SEC_TMR3A
+//! - \b UDMA_DEF_USBEP2TX_SEC_TMR3B
+//! - \b UDMA_DEF_USBEP3RX_SEC_TMR2A
+//! - \b UDMA_DEF_USBEP3TX_SEC_TMR2B
+//! - \b UDMA_DEF_ETH0RX_SEC_TMR2A
+//! - \b UDMA_DEF_ETH0TX_SEC_TMR2B
+//! - \b UDMA_DEF_UART0RX_SEC_UART1RX
+//! - \b UDMA_DEF_UART0TX_SEC_UART1TX
+//! - \b UDMA_DEF_SSI0RX_SEC_SSI1RX
+//! - \b UDMA_DEF_SSI0TX_SEC_SSI1TX
+//! - \b UDMA_DEF_RESERVED_SEC_UART2RX
+//! - \b UDMA_DEF_RESERVED_SEC_UART2TX
+//! - \b UDMA_DEF_ADC00_SEC_TMR2A
+//! - \b UDMA_DEF_ADC01_SEC_TMR2B
+//! - \b UDMA_DEF_ADC02_SEC_RESERVED
+//! - \b UDMA_DEF_ADC03_SEC_RESERVED
+//! - \b UDMA_DEF_TMR0A_SEC_TMR1A
+//! - \b UDMA_DEF_TMR0B_SEC_TMR1B
+//! - \b UDMA_DEF_TMR1A_SEC_EPI0RX
+//! - \b UDMA_DEF_TMR1B_SEC_EPI0TX
+//! - \b UDMA_DEF_UART1RX_SEC_RESERVED
+//! - \b UDMA_DEF_UART1TX_SEC_RESERVED
+//! - \b UDMA_DEF_SSI1RX_SEC_ADC10
+//! - \b UDMA_DEF_SSI1TX_SEC_ADC11
+//! - \b UDMA_DEF_RESERVED_SEC_ADC12
+//! - \b UDMA_DEF_RESERVED_SEC_ADC13
+//! - \b UDMA_DEF_I2S0RX_SEC_RESERVED
+//! - \b UDMA_DEF_I2S0TX_SEC_RESERVED
+//!
+//! \return None.
+//
+//*****************************************************************************
+void
+uDMAChannelSelectSecondary(uint32_t ui32SecPeriphs)
+{
+    //
+    // Select the secondary peripheral for the specified channels.
+    //
+    HWREG(UDMA_CHASGN) |= ui32SecPeriphs;
+}
+
+//*****************************************************************************
+//
+//! Selects the default peripheral for a set of uDMA channels.
+//!
+//! \param ui32DefPeriphs is the logical OR of the uDMA channels for which to
+//! use the default peripheral, instead of the secondary peripheral.
+//!
+//! This function is used to select the default peripheral assignment for a set
+//! of uDMA channels.
+//!
+//! The parameter \e ui32DefPeriphs can be the logical OR of any of the
+//! following macros.  If one of the macros below is in the list passed to this
+//! function, then the default peripheral (marked as \b _DEF_) is selected.
+//!
+//! - \b UDMA_DEF_USBEP1RX_SEC_UART2RX
+//! - \b UDMA_DEF_USBEP1TX_SEC_UART2TX
+//! - \b UDMA_DEF_USBEP2RX_SEC_TMR3A
+//! - \b UDMA_DEF_USBEP2TX_SEC_TMR3B
+//! - \b UDMA_DEF_USBEP3RX_SEC_TMR2A
+//! - \b UDMA_DEF_USBEP3TX_SEC_TMR2B
+//! - \b UDMA_DEF_ETH0RX_SEC_TMR2A
+//! - \b UDMA_DEF_ETH0TX_SEC_TMR2B
+//! - \b UDMA_DEF_UART0RX_SEC_UART1RX
+//! - \b UDMA_DEF_UART0TX_SEC_UART1TX
+//! - \b UDMA_DEF_SSI0RX_SEC_SSI1RX
+//! - \b UDMA_DEF_SSI0TX_SEC_SSI1TX
+//! - \b UDMA_DEF_RESERVED_SEC_UART2RX
+//! - \b UDMA_DEF_RESERVED_SEC_UART2TX
+//! - \b UDMA_DEF_ADC00_SEC_TMR2A
+//! - \b UDMA_DEF_ADC01_SEC_TMR2B
+//! - \b UDMA_DEF_ADC02_SEC_RESERVED
+//! - \b UDMA_DEF_ADC03_SEC_RESERVED
+//! - \b UDMA_DEF_TMR0A_SEC_TMR1A
+//! - \b UDMA_DEF_TMR0B_SEC_TMR1B
+//! - \b UDMA_DEF_TMR1A_SEC_EPI0RX
+//! - \b UDMA_DEF_TMR1B_SEC_EPI0TX
+//! - \b UDMA_DEF_UART1RX_SEC_RESERVED
+//! - \b UDMA_DEF_UART1TX_SEC_RESERVED
+//! - \b UDMA_DEF_SSI1RX_SEC_ADC10
+//! - \b UDMA_DEF_SSI1TX_SEC_ADC11
+//! - \b UDMA_DEF_RESERVED_SEC_ADC12
+//! - \b UDMA_DEF_RESERVED_SEC_ADC13
+//! - \b UDMA_DEF_I2S0RX_SEC_RESERVED
+//! - \b UDMA_DEF_I2S0TX_SEC_RESERVED
+//!
+//! \return None.
+//
+//*****************************************************************************
+void
+uDMAChannelSelectDefault(uint32_t ui32DefPeriphs)
+{
+    //
+    // Select the default peripheral for the specified channels.
+    //
+    HWREG(UDMA_CHASGN) &= ~ui32DefPeriphs;
+}
+#endif
 
 //*****************************************************************************
 //

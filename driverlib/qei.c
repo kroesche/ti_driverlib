@@ -2,7 +2,7 @@
 //
 // qei.c - Driver for the Quadrature Encoder with Index.
 //
-// Copyright (c) 2005-2013 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2015 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.0.1.11577 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.1.1.71 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -425,22 +425,22 @@ _QEIIntNumberGet(uint32_t ui32Base)
     //
     // Find the valid interrupt number for this quadrature encoder.
     //
-    if(CLASS_IS_BLIZZARD)
+    if(CLASS_IS_TM4C123)
     {
         if(ui32Base == QEI0_BASE)
         {
-            ui32Int = INT_QEI0_BLIZZARD;
+            ui32Int = INT_QEI0_TM4C123;
         }
         else
         {
-            ui32Int = INT_QEI1_BLIZZARD;
+            ui32Int = INT_QEI1_TM4C123;
         }
     }
-    else if(CLASS_IS_SNOWFLAKE)
+    else if(CLASS_IS_TM4C129)
     {
         if(ui32Base == QEI0_BASE)
         {
-            ui32Int = INT_QEI0_SNOWFLAKE;
+            ui32Int = INT_QEI0_TM4C129;
         }
         else
         {

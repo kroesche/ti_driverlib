@@ -108,7 +108,7 @@
         </option>
         <option>
           <name>OGChipSelectEditMenu</name>
-          <state>LM4F110B2QR	TexasInstruments LM4F110B2QR</state>
+          <state>TM4C1230C3PM	TexasInstruments TM4C1230C3PM</state>
         </option>
         <option>
           <name>GenLowLevelInterface</name>
@@ -819,6 +819,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\mpu.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\onewire.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\pwm.c</name>
