@@ -33,12 +33,12 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 10636 of the Stellaris Peripheral Driver Library.
+// This is part of revision 2.0.1.11577 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
-#ifndef __DEBUG_H__
-#define __DEBUG_H__
+#ifndef __DRIVERLIB_DEBUG_H__
+#define __DRIVERLIB_DEBUG_H__
 
 //*****************************************************************************
 //
@@ -46,7 +46,7 @@
 // to an API.  This is only used when doing a DEBUG build.
 //
 //*****************************************************************************
-extern void __error__(char *pcFilename, unsigned long ulLine);
+extern void __error__(char *pcFilename, uint32_t ui32Line);
 
 //*****************************************************************************
 //
@@ -55,14 +55,16 @@ extern void __error__(char *pcFilename, unsigned long ulLine);
 //
 //*****************************************************************************
 #ifdef DEBUG
-#define ASSERT(expr) {                                      \
-                         if(!(expr))                        \
-                         {                                  \
-                             __error__(__FILE__, __LINE__); \
-                         }                                  \
-                     }
+#define ASSERT(expr) do                                                       \
+                     {                                                        \
+                         if(!(expr))                                          \
+                         {                                                    \
+                             __error__(__FILE__, __LINE__);                   \
+                         }                                                    \
+                     }                                                        \
+                     while(0)
 #else
 #define ASSERT(expr)
 #endif
 
-#endif // __DEBUG_H__
+#endif // __DRIVERLIB_DEBUG_H__

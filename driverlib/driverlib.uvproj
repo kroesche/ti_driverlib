@@ -7,19 +7,19 @@
 
   <Targets>
     <Target>
-      <TargetName>driverlib-cm3</TargetName>
+      <TargetName>driverlib</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>LM3S101</Device>
+          <Device>LM4F110B2QR</Device>
           <Vendor>Texas Instruments</Vendor>
-          <Cpu>IRAM(0x20000000-0x200007FF) IROM(0-0x1FFF) CLOCK(8000000) CPUTYPE("Cortex-M3")</Cpu>
+          <Cpu>IRAM(0x20000000-0x20002FFF) IROM(0-0x7FFF) CLOCK(8000000) CPUTYPE("Cortex-M4") FPU2</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile>"STARTUP\Luminary\Startup.s" ("Luminary Startup Code")</StartupFile>
-          <FlashDriverDll>UL2CM3(-UU0101L5E -O14 -S0 -C0 -N00("ARM Cortex-M3") -D00(1BA00477) -L00(4) -FO7 -FD20000000 -FC800 -FN1 -FF0LM3S_8 -FS00 -FL02000)</FlashDriverDll>
-          <DeviceId>4079</DeviceId>
-          <RegisterFile>LM3Sxxx.H</RegisterFile>
+          <FlashDriverDll>UL2CM3(-O207 -S0 -C0 -FO7 -FD20000000 -FC800 -FN1 -FF0LM4F_32 -FS00 -FL08000)</FlashDriverDll>
+          <DeviceId>5919</DeviceId>
+          <RegisterFile>LM4Fxxxx.H</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -29,7 +29,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>SFD\Luminary\LM3S101.SFR</SFDFile>
+          <SFDFile>SFD\Luminary\LM4F110B2QR.SFR</SFDFile>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
           <IncludePath></IncludePath>
@@ -43,14 +43,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\rvmdk-cm3\</OutputDirectory>
-          <OutputName>driverlib-cm3</OutputName>
+          <OutputDirectory>.\rvmdk\</OutputDirectory>
+          <OutputName>driverlib</OutputName>
           <CreateExecutable>0</CreateExecutable>
           <CreateLib>1</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\rvmdk-cm3\</ListingPath>
+          <ListingPath>.\rvmdk\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -98,13 +98,13 @@
         </CommonProperty>
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
-          <SimDllArguments></SimDllArguments>
-          <SimDlgDll>DLM.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pLM3S101</SimDlgDllArguments>
+          <SimDllArguments>-MPU</SimDllArguments>
+          <SimDlgDll>DCM.DLL</SimDlgDll>
+          <SimDlgDllArguments>-pCM4</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
-          <TargetDllArguments></TargetDllArguments>
-          <TargetDlgDll>TLM.DLL</TargetDlgDll>
-          <TargetDlgDllArguments>-pLM3S101</TargetDlgDllArguments>
+          <TargetDllArguments>-MPU</TargetDllArguments>
+          <TargetDlgDll>TCM.DLL</TargetDlgDll>
+          <TargetDlgDllArguments>-pCM4</TargetDlgDllArguments>
         </DllOption>
         <DebugOption>
           <OPTHX>
@@ -195,7 +195,7 @@
             <AdsLsxf>0</AdsLsxf>
             <RvctClst>0</RvctClst>
             <GenPPlst>0</GenPPlst>
-            <AdsCpuType>"Cortex-M3"</AdsCpuType>
+            <AdsCpuType>"Cortex-M4"</AdsCpuType>
             <RvctDeviceName></RvctDeviceName>
             <mOS>0</mOS>
             <uocRom>0</uocRom>
@@ -204,7 +204,7 @@
             <hadIRAM>1</hadIRAM>
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
-            <RvdsVP>0</RvdsVP>
+            <RvdsVP>2</RvdsVP>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -264,12 +264,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x800</Size>
+                <Size>0x3000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x8000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -294,7 +294,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x8000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -319,7 +319,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x800</Size>
+                <Size>0x3000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -343,7 +343,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--c99</MiscControls>
               <Define>rvmdk </Define>
               <Undefine></Undefine>
               <IncludePath>..;</IncludePath>
@@ -392,6 +392,11 @@
               <FilePath>.\adc.c</FilePath>
             </File>
             <File>
+              <FileName>aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\aes.c</FilePath>
+            </File>
+            <File>
               <FileName>can.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\can.c</FilePath>
@@ -407,19 +412,39 @@
               <FilePath>.\cpu.c</FilePath>
             </File>
             <File>
+              <FileName>crc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\crc.c</FilePath>
+            </File>
+            <File>
+              <FileName>des.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\des.c</FilePath>
+            </File>
+            <File>
+              <FileName>eeprom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\eeprom.c</FilePath>
+            </File>
+            <File>
+              <FileName>emac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\emac.c</FilePath>
+            </File>
+            <File>
               <FileName>epi.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\epi.c</FilePath>
             </File>
             <File>
-              <FileName>ethernet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ethernet.c</FilePath>
-            </File>
-            <File>
               <FileName>flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>fpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\fpu.c</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>
@@ -437,14 +462,14 @@
               <FilePath>.\i2c.c</FilePath>
             </File>
             <File>
-              <FileName>i2s.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\i2s.c</FilePath>
-            </File>
-            <File>
               <FileName>interrupt.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\interrupt.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lcd.c</FilePath>
             </File>
             <File>
               <FileName>mpu.c</FileName>
@@ -462,14 +487,29 @@
               <FilePath>.\qei.c</FilePath>
             </File>
             <File>
+              <FileName>shamd5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\shamd5.c</FilePath>
+            </File>
+            <File>
               <FileName>ssi.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\ssi.c</FilePath>
             </File>
             <File>
+              <FileName>sw_crc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sw_crc.c</FilePath>
+            </File>
+            <File>
               <FileName>sysctl.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\sysctl.c</FilePath>
+            </File>
+            <File>
+              <FileName>sysexc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sysexc.c</FilePath>
             </File>
             <File>
               <FileName>systick.c</FileName>

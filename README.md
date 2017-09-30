@@ -24,6 +24,7 @@ Tag | Comment
 ----|--------
 LM3S-LM4F-9453|This was the last release of StellarisWare that included both the LM3S and LM4F devices before the Tiva rebranding
 LM3S-10636    |Last release of StellarisWare for just the LM3S device. After this the LM4F/Tiva devices were split into a separate product. This is probably what you should use if you have a LM3S.
+TivaWare_C_2.0.1.11577|Likely the first, or nearly the first release of TivaWare after Tiva was split from Stellaris. Use this or a later release if you have Tiva (LM4F or TM4C)
 
 * * * * *
 

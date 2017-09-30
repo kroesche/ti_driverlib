@@ -2,7 +2,7 @@
 #
 # Makefile - Rules for building the driver library.
 #
-# Copyright (c) 2011-2013 Texas Instruments Incorporated.  All rights reserved.
+# Copyright (c) 2005-2013 Texas Instruments Incorporated.  All rights reserved.
 # Software License Agreement
 # 
 #   Redistribution and use in source and binary forms, with or without
@@ -33,15 +33,81 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
-# This is part of revision 10636 of the Stellaris Peripheral Driver Library.
+# This is part of revision 2.0.1.11577 of the Tiva Peripheral Driver Library.
 #
 #******************************************************************************
 
-all:
-	@make -f Makefile.driverlib-cm3
+#
+# The base directory for TivaWare.
+#
+ROOT=..
 
+#
+# Include the common make definitions.
+#
+include ${ROOT}/makedefs
+
+#
+# Where to find header files that do not live in the source directory.
+#
+IPATH=..
+
+#
+# The default rule, which causes the driver library to be built.
+#
+all: ${COMPILER}
+all: ${COMPILER}/libdriver.a
+
+#
+# The rule to clean out all the build products.
+#
 clean:
-	@make -f Makefile.driverlib-cm3 clean
+	@rm -rf ${COMPILER} ${wildcard *~}
 
-realclean:
-	@make -f Makefile.driverlib-cm3 realclean
+#
+# The rule to create the target directory.
+#
+${COMPILER}:
+	@mkdir -p ${COMPILER}
+
+#
+# Rules for building the driver library.
+#
+${COMPILER}/libdriver.a: ${COMPILER}/adc.o
+${COMPILER}/libdriver.a: ${COMPILER}/aes.o
+${COMPILER}/libdriver.a: ${COMPILER}/can.o
+${COMPILER}/libdriver.a: ${COMPILER}/comp.o
+${COMPILER}/libdriver.a: ${COMPILER}/cpu.o
+${COMPILER}/libdriver.a: ${COMPILER}/crc.o
+${COMPILER}/libdriver.a: ${COMPILER}/des.o
+${COMPILER}/libdriver.a: ${COMPILER}/eeprom.o
+${COMPILER}/libdriver.a: ${COMPILER}/emac.o
+${COMPILER}/libdriver.a: ${COMPILER}/epi.o
+${COMPILER}/libdriver.a: ${COMPILER}/flash.o
+${COMPILER}/libdriver.a: ${COMPILER}/fpu.o
+${COMPILER}/libdriver.a: ${COMPILER}/gpio.o
+${COMPILER}/libdriver.a: ${COMPILER}/hibernate.o
+${COMPILER}/libdriver.a: ${COMPILER}/i2c.o
+${COMPILER}/libdriver.a: ${COMPILER}/interrupt.o
+${COMPILER}/libdriver.a: ${COMPILER}/lcd.o
+${COMPILER}/libdriver.a: ${COMPILER}/mpu.o
+${COMPILER}/libdriver.a: ${COMPILER}/pwm.o
+${COMPILER}/libdriver.a: ${COMPILER}/qei.o
+${COMPILER}/libdriver.a: ${COMPILER}/shamd5.o
+${COMPILER}/libdriver.a: ${COMPILER}/ssi.o
+${COMPILER}/libdriver.a: ${COMPILER}/sw_crc.o
+${COMPILER}/libdriver.a: ${COMPILER}/sysctl.o
+${COMPILER}/libdriver.a: ${COMPILER}/sysexc.o
+${COMPILER}/libdriver.a: ${COMPILER}/systick.o
+${COMPILER}/libdriver.a: ${COMPILER}/timer.o
+${COMPILER}/libdriver.a: ${COMPILER}/uart.o
+${COMPILER}/libdriver.a: ${COMPILER}/udma.o
+${COMPILER}/libdriver.a: ${COMPILER}/usb.o
+${COMPILER}/libdriver.a: ${COMPILER}/watchdog.o
+
+#
+# Include the automatically generated dependency files.
+#
+ifneq (${MAKECMDGOALS},clean)
+-include ${wildcard ${COMPILER}/*.d} __dummy__
+endif

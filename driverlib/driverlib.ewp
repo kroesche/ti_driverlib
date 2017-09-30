@@ -17,20 +17,20 @@
         <debug>1</debug>
         <option>
           <name>ExePath</name>
-          <state>ewarm-cm3\Exe</state>
+          <state>ewarm\Exe</state>
         </option>
         <option>
           <name>ObjPath</name>
-          <state>ewarm-cm3\Obj</state>
+          <state>ewarm\Obj</state>
         </option>
         <option>
           <name>ListPath</name>
-          <state>ewarm-cm3\List</state>
+          <state>ewarm\List</state>
         </option>
         <option>
           <name>Variant</name>
-          <version>7</version>
-          <state>31</state>
+          <version>19</version>
+          <state>39</state>
         </option>
         <option>
           <name>GEndianMode</name>
@@ -60,8 +60,8 @@
         </option>
         <option>
           <name>FPU</name>
-          <version>0</version>
-          <state>0</state>
+          <version>2</version>
+          <state>5</state>
         </option>
         <option>
           <name>OGCoreOrChip</name>
@@ -108,7 +108,7 @@
         </option>
         <option>
           <name>OGChipSelectEditMenu</name>
-          <state>LM3S101	TexasInstruments LM3S101</state>
+          <state>LM4F110B2QR	TexasInstruments LM4F110B2QR</state>
         </option>
         <option>
           <name>GenLowLevelInterface</name>
@@ -492,7 +492,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>driverlib-cm3.srec</state>
+          <state>driverlib.srec</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -546,7 +546,7 @@
         </option>
         <option>
           <name>IlinkOutputFile</name>
-          <state>driverlib-cm3.out</state>
+          <state>driverlib.out</state>
         </option>
         <option>
           <name>IlinkDebugInfoEnable</name>
@@ -754,7 +754,7 @@
         </option>
         <option>
           <name>IarchiveOutput</name>
-          <state>$PROJ_DIR$\ewarm-cm3\Exe\driverlib-cm3.a</state>
+          <state>$PROJ_DIR$\ewarm\Exe\driverlib.a</state>
         </option>
       </data>
     </settings>
@@ -770,6 +770,9 @@
       <name>$PROJ_DIR$\adc.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\aes.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\can.c</name>
     </file>
     <file>
@@ -779,13 +782,25 @@
       <name>$PROJ_DIR$\cpu.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\crc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\des.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\eeprom.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\emac.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\epi.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\ethernet.c</name>
+      <name>$PROJ_DIR$\flash.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\flash.c</name>
+      <name>$PROJ_DIR$\fpu.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\gpio.c</name>
@@ -797,10 +812,10 @@
       <name>$PROJ_DIR$\i2c.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\i2s.c</name>
+      <name>$PROJ_DIR$\interrupt.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\interrupt.c</name>
+      <name>$PROJ_DIR$\lcd.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\mpu.c</name>
@@ -812,10 +827,19 @@
       <name>$PROJ_DIR$\qei.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\shamd5.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\ssi.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\sw_crc.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\sysctl.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\sysexc.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\systick.c</name>

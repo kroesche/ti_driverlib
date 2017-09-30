@@ -33,12 +33,12 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 10636 of the Stellaris Peripheral Driver Library.
+// This is part of revision 2.0.1.11577 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
-#ifndef __SYSTICK_H__
-#define __SYSTICK_H__
+#ifndef __DRIVERLIB_SYSTICK_H__
+#define __DRIVERLIB_SYSTICK_H__
 
 //*****************************************************************************
 //
@@ -62,9 +62,9 @@ extern void SysTickIntRegister(void (*pfnHandler)(void));
 extern void SysTickIntUnregister(void);
 extern void SysTickIntEnable(void);
 extern void SysTickIntDisable(void);
-extern void SysTickPeriodSet(unsigned long ulPeriod);
-extern unsigned long SysTickPeriodGet(void);
-extern unsigned long SysTickValueGet(void);
+extern void SysTickPeriodSet(uint32_t ui32Period);
+extern uint32_t SysTickPeriodGet(void);
+extern uint32_t SysTickValueGet(void);
 
 //*****************************************************************************
 //
@@ -75,4 +75,4 @@ extern unsigned long SysTickValueGet(void);
 }
 #endif
 
-#endif // __SYSTICK_H__
+#endif // __DRIVERLIB_SYSTICK_H__
